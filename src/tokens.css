@@ -1,0 +1,74 @@
+/* Design-Tokens: alle Farben, Schriften und Abstände an einer Stelle.
+   Dieselben Werte gelten für die Präsentationsfolien. */
+:root {
+  /* ---------- App: „Tablett“ ---------- */
+  --tomate: #d93a2b;
+  --tomate-dunkel: #b02a1d;
+  --tomate-hell: #fbe1da;
+  --safran: #f4b62a;
+  --safran-hell: #fdf0cf;
+  --basilikum: #2e6b3f;
+  --basilikum-hell: #e2efe4;
+  --aubergine: #2b1b24;
+  --aubergine-leise: #6e5a62;
+  --tablett: #fbede6;
+  --teller: #ffffff;
+  --teller-rand: #efd9cf;
+  --skelett: #f3e2da;
+
+  /* Kategorien */
+  --kat-vegan: #2e6b3f;
+  --kat-vegetarisch: #8a6a00;
+  --kat-fleisch: #a3291d;
+  --kat-fisch: #1f5f8b;
+
+  /* ---------- MSW: „Kontrollraum“ ---------- */
+  --leitstand: #121c26;
+  --pult: #1a2633;
+  --pult-hoch: #223142;
+  --leitung: #2e3e4f;
+  --anzeige: #e6edf3;
+  --anzeige-leise: #93a4b5;
+
+  /* Status im Inspector */
+  --status-gemockt: #3fd28a;
+  --status-fehler: #ff6b5e;
+  --status-wartet: #f5c04a;
+  --status-durch: #6aaeff;
+
+  /* ---------- Schriften ---------- */
+  --schrift-karte: 'Young Serif', Georgia, serif;
+  --schrift-app: 'Figtree Variable', 'Segoe UI', system-ui, sans-serif;
+  --schrift-technik: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --schrift-code: 'IBM Plex Mono', Consolas, monospace;
+
+  /* Grundgröße: 18 px bei 1280 px, wächst bis 22 px bei 1920 px */
+  --grundgroesse: clamp(18px, 0.625vw + 10px, 22px);
+  --text-klein: 0.8rem;
+  --text-normal: 1rem;
+  --text-gross: 1.2rem;
+  --text-titel: 1.9rem;
+
+  /* ---------- Abstände und Formen ---------- */
+  --abstand-1: 4px;
+  --abstand-2: 8px;
+  --abstand-3: 12px;
+  --abstand-4: 16px;
+  --abstand-5: 24px;
+  --abstand-6: 32px;
+  --radius-klein: 6px;
+  --radius-teller: 18px;
+  --radius-pult: 10px;
+
+  /* ---------- Bewegung ---------- */
+  --dauer-kurz: 160ms;
+  --dauer-weg: 320ms;
+  --kurve: cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dauer-kurz: 0ms;
+    --dauer-weg: 0ms;
+  }
+}

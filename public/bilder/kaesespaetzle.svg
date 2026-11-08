@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><!-- Käsespätzle mit Röstzwiebeln und Gurkensalat (Demo-Illustration) --><circle cx="50" cy="50" r="48" fill="#fff" stroke="#efd9cf" stroke-width="2"/><circle cx="50" cy="50" r="37" fill="#fbf4ef"/>
+<path d="M22 50c0-16 14-26 30-26 14 0 26 10 26 24 0 16-14 26-30 26-14 0-26-10-26-24z" fill="#f7d978"/>
+<g fill="none" stroke="#e8b83c" stroke-width="3" stroke-linecap="round"><path d="M30 42c4-3 8 3 12 0"/><path d="M46 34c4-3 8 3 12 0"/><path d="M34 54c4-3 8 3 12 0"/><path d="M52 48c4-3 8 3 12 0"/><path d="M40 64c4-3 8 3 12 0"/><path d="M58 60c3-2 6 2 9 0"/></g>
+<g fill="none" stroke="#8f4f22" stroke-width="2.6" stroke-linecap="round"><path d="M44 44c3-3 7-1 6 3"/><path d="M56 40c3 2 2 6-1 6"/><path d="M48 54c-2 3 0 6 4 5"/><path d="M38 48c2-3 6-2 6 1"/></g>
+<g><circle cx="74" cy="72" r="7" fill="#a9c97a" stroke="#5f8a3a" stroke-width="1.5"/><circle cx="74" cy="72" r="3" fill="#e7f0d2"/>
+<circle cx="62" cy="78" r="6" fill="#a9c97a" stroke="#5f8a3a" stroke-width="1.5"/><circle cx="62" cy="78" r="2.6" fill="#e7f0d2"/></g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><!-- Seelachs mit Kartoffelpüree und Erbsen (Demo-Illustration) --><circle cx="50" cy="50" r="48" fill="#fff" stroke="#efd9cf" stroke-width="2"/><circle cx="50" cy="50" r="37" fill="#fbf4ef"/>
+<path d="M20 50c4-12 18-20 34-18 12 1 22 8 24 16-4 8-16 14-30 14-14 0-26-4-28-12z" fill="#f4e3c6" stroke="#dcab5c" stroke-width="3"/>
+<path d="M34 44c4 4 4 10 0 14M46 40c4 5 4 13 0 18M58 41c3 4 3 10 0 14" fill="none" stroke="#e6c48e" stroke-width="2" stroke-linecap="round"/>
+<path d="M30 70c0-6 8-10 16-10s16 4 16 10-8 10-16 10-16-4-16-10z" fill="#f7ecc9"/>
+<path d="M38 68c3-2 8-2 10 0M44 74c3-1 6-1 8 1" fill="none" stroke="#e8d49a" stroke-width="2" stroke-linecap="round"/>
+<rect x="44" y="62" width="6" height="5" rx="1.5" fill="#f7d65e"/>
+<g fill="#6fa83e" stroke="#4f8a2e" stroke-width="0.8"><circle cx="70" cy="66" r="3.4"/><circle cx="76" cy="62" r="3.4"/><circle cx="74" cy="70" r="3.4"/><circle cx="66" cy="73" r="3.4"/><circle cx="80" cy="68" r="3.4"/></g>
+<path d="M68 34c4 0 7 3 7 7" fill="none" stroke="#f2d23a" stroke-width="3.5" stroke-linecap="round"/>
+</svg>

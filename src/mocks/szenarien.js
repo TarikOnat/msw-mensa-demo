@@ -1,5 +1,6 @@
 import { http, HttpResponse } from 'msw/http'
 import { delay } from 'msw/utils/delay'
+import { datum } from './daten.js'
 
 // Sonderfälle als zusätzliche Handler. Sie werden zur Laufzeit VOR die
 // normalen Handler gesetzt: im Browser mit worker.use(), im Test mit server.use().
@@ -15,6 +16,11 @@ export const szenarien = {
   }),
 
   leer: http.get('/api/speiseplan/:tag', ({ params }) => {
-    return HttpResponse.json({ tag: params.tag, mensa: 'Campus-Mensa', gerichte: [] })
+    return HttpResponse.json({
+      tag: params.tag,
+      datum: datum[params.tag] ?? null,
+      mensa: 'Campus-Mensa',
+      gerichte: [],
+    })
   }),
 }

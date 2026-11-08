@@ -4,8 +4,12 @@ import { reactive } from 'vue'
 // Grundlage sind die Life-Cycle-Events von MSW (worker.events).
 export const protokoll = reactive([])
 
-const MAX_EINTRAEGE = 10
+const MAX_EINTRAEGE = 12
 
+// Phasen im Ablaufdiagramm:
+// 'pruefen'  zwischen request:start und Ergebnis (MSW führt die Handler aus)
+// 'netz'     kein Handler passt, Request geht ans echte Netzwerk
+// 'fertig'   Antwort ist da (gemockt oder vom Netzwerk)
 export function verbindeInspector(worker) {
   const istApiRequest = (request) => new URL(request.url).pathname.startsWith('/api/')
   const eintrag = (requestId) => protokoll.find((e) => e.id === requestId)
@@ -18,6 +22,8 @@ export function verbindeInspector(worker) {
       methode: request.method,
       pfad: new URL(request.url).pathname,
       status: 'abgefangen, wartet …',
+      phase: 'pruefen',
+      weg: 'handler',
       code: null,
       info: '',
     })
@@ -31,13 +37,17 @@ export function verbindeInspector(worker) {
 
   worker.events.on('request:unhandled', ({ requestId }) => {
     const e = eintrag(requestId)
-    if (e) e.status = 'kein Handler'
+    if (!e) return
+    e.status = 'kein Handler'
+    e.phase = 'netz'
+    e.weg = 'netz'
   })
 
   worker.events.on('response:mocked', ({ requestId, response }) => {
     const e = eintrag(requestId)
     if (!e) return
     e.status = 'gemockt'
+    e.phase = 'fertig'
     e.code = response.status
   })
 
@@ -45,6 +55,8 @@ export function verbindeInspector(worker) {
     const e = eintrag(requestId)
     if (!e) return
     e.status = 'durchgelassen'
+    e.phase = 'fertig'
+    e.weg = 'netz'
     e.code = response.status
     e.info = `echte Antwort: ${response.headers.get('content-type') ?? 'unbekannt'}`
   })
@@ -53,6 +65,15 @@ export function verbindeInspector(worker) {
     const e = eintrag(requestId)
     if (!e) return
     e.status = 'Fehler im Handler'
+    e.phase = 'fertig'
     e.info = error.message
   })
+}
+
+// Ergebnis für die Farbe: gemockt / fehler / wartet / durch
+export function ergebnis(e) {
+  if (e.code >= 400 || e.status === 'Fehler im Handler') return 'fehler'
+  if (e.weg === 'netz') return 'durch'
+  if (e.phase === 'fertig') return 'gemockt'
+  return 'wartet'
 }

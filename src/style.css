@@ -1,130 +1,14 @@
-/* Für den Beamer: große Schrift, hoher Kontrast, keine externen Fonts (läuft offline) */
-:root {
-  --bg: #f3f4f1;
-  --karte: #ffffff;
-  --text: #1c211e;
-  --leise: #5e6862;
-  --rand: #dde1dc;
-  --akzent: #1f6f50;
-  --akzent-hell: #e3f1ea;
-  --code-bg: #1d2321;
-  --code-text: #e8efe9;
-  --ok: #1f7a4a;
-  --wartet: #a86400;
-  --durch: #3b5bb5;
-  --fehler: #b3261e;
-  --fehler-hell: #fbe9e7;
-  --mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  font-size: 18px;
-  color: var(--text);
-  background: var(--bg);
+/* Grundregeln. Alle Werte kommen aus tokens.css. */
+* { box-sizing: border-box; }
+
+html {
+  font-size: var(--grundgroesse);
+  font-family: var(--schrift-app);
+  color: var(--aubergine);
+  background: var(--tablett);
+  -webkit-font-smoothing: antialiased;
 }
 
-* { box-sizing: border-box; }
 body { margin: 0; }
 button { font: inherit; cursor: pointer; }
-button:focus-visible { outline: 3px solid var(--akzent); outline-offset: 2px; }
-
-.buehne {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 28px;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 28px;
-}
-.buehne.nur-app { grid-template-columns: minmax(0, 640px); justify-content: center; }
-@media (max-width: 900px) { .buehne { grid-template-columns: 1fr; } }
-
-.spalte { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.spalten-titel {
-  margin: 0;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--leise);
-}
-.spalten-titel span { font-weight: 400; text-transform: none; letter-spacing: 0; margin-left: 6px; }
-
-.karte {
-  background: var(--karte);
-  border: 1px solid var(--rand);
-  border-radius: 14px;
-  padding: 24px;
-}
-
-/* ---------- App ---------- */
-.app { display: flex; flex-direction: column; gap: 18px; }
-.app-kopf { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
-.kicker { margin: 0; color: var(--akzent); font-weight: 700; font-size: 0.85rem; }
-h1 { margin: 2px 0 0; font-size: 2rem; }
-
-.tabs { display: flex; gap: 4px; background: var(--bg); padding: 4px; border-radius: 10px; }
-.tabs button {
-  border: 0; background: transparent; padding: 8px 16px; border-radius: 8px;
-  color: var(--leise); text-transform: capitalize;
-}
-.tabs button.aktiv { background: var(--karte); color: var(--text); font-weight: 600; box-shadow: 0 1px 2px rgb(0 0 0 / 0.1); }
-
-.gerichte { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.gericht { padding: 14px 0; border-top: 1px solid var(--rand); display: flex; flex-direction: column; gap: 6px; }
-.gericht:first-child { border-top: 0; padding-top: 0; }
-.gericht-zeile { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.name { font-weight: 600; }
-.preis { font-variant-numeric: tabular-nums; white-space: nowrap; }
-
-.chip { font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 99px; background: var(--bg); color: var(--leise); }
-.chip[data-kategorie='vegan'] { background: var(--akzent-hell); color: var(--akzent); }
-
-.sterne { display: flex; }
-.sterne button { border: 0; background: none; color: #c9cec9; font-size: 1.3rem; padding: 0 2px; line-height: 1; }
-.sterne:hover button { color: #e0a100; }
-.sterne button:hover ~ button { color: #c9cec9; }
-.rueckmeldung { margin: 0; font-size: 0.85rem; color: var(--akzent); }
-
-.hinweis { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 22px; border-radius: 10px; background: var(--bg); }
-.hinweis.laden { flex-direction: row; align-items: center; color: var(--leise); }
-.hinweis.fehler { background: var(--fehler-hell); color: var(--fehler); }
-.spinner { width: 20px; height: 20px; border: 3px solid var(--rand); border-top-color: var(--akzent); border-radius: 50%; animation: drehen 0.8s linear infinite; }
-@keyframes drehen { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
-
-.knopf { border: 1px solid currentColor; background: transparent; color: inherit; padding: 6px 14px; border-radius: 8px; }
-.knopf.leise { color: var(--leise); }
-.app-fuss { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--rand); padding-top: 16px; font-size: 0.9rem; color: var(--leise); }
-
-/* ---------- Demo-Steuerung ---------- */
-.demo { display: flex; flex-direction: column; gap: 14px; }
-h2 { margin: 6px 0 0; font-size: 1.05rem; }
-.leise-text { color: var(--leise); font-weight: 400; font-size: 0.85rem; }
-.leise-text code, h2 .leise-text { font-family: var(--mono); }
-
-.szenarien { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
-.szenario { border: 2px solid var(--rand); background: var(--karte); border-radius: 10px; padding: 12px 6px; font-weight: 600; text-transform: capitalize; }
-.szenario.aktiv { border-color: var(--akzent); background: var(--akzent-hell); color: var(--akzent); }
-
-.code-zeile { margin: 0; padding: 12px 16px; border-radius: 10px; background: var(--code-bg); color: var(--code-text); font-family: var(--mono); font-size: 0.9rem; overflow-x: auto; }
-
-.protokoll { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; }
-.protokoll li {
-  display: grid;
-  grid-template-columns: auto auto minmax(0, 1fr) auto;
-  gap: 4px 10px;
-  align-items: baseline;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: var(--bg);
-  border-left: 4px solid var(--rand);
-}
-.protokoll .zeit { color: var(--leise); font-variant-numeric: tabular-nums; }
-.protokoll .methode, .protokoll .pfad { font-family: var(--mono); }
-.protokoll .methode { font-weight: 700; }
-.protokoll .pfad { overflow-wrap: anywhere; }
-.protokoll .status { font-weight: 600; white-space: nowrap; }
-.protokoll .info { grid-column: 3 / -1; color: var(--leise); font-size: 0.8rem; }
-.protokoll li.ok { border-left-color: var(--ok); } .protokoll li.ok .status { color: var(--ok); }
-.protokoll li.wartet { border-left-color: var(--wartet); } .protokoll li.wartet .status { color: var(--wartet); }
-.protokoll li.durch { border-left-color: var(--durch); } .protokoll li.durch .status { color: var(--durch); }
-.protokoll li.fehler { border-left-color: var(--fehler); } .protokoll li.fehler .status { color: var(--fehler); }
+:focus-visible { outline: 3px solid var(--tomate); outline-offset: 2px; }

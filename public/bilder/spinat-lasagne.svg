@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><!-- Spinat-Lasagne mit Tomatensalat (Demo-Illustration) --><circle cx="50" cy="50" r="48" fill="#fff" stroke="#efd9cf" stroke-width="2"/><circle cx="50" cy="50" r="37" fill="#fbf4ef"/>
+<g transform="rotate(-12 42 50)">
+<rect x="20" y="30" width="40" height="38" rx="4" fill="#3f6e33"/>
+<rect x="20" y="30" width="40" height="34" rx="4" fill="#f0c25a"/>
+<path d="M22 64h36" stroke="#c9452f" stroke-width="3"/>
+<g fill="#c98a2c"><circle cx="30" cy="40" r="3"/><circle cx="46" cy="38" r="2.4"/><circle cx="38" cy="52" r="3.4"/><circle cx="52" cy="54" r="2.2"/></g>
+<g fill="#4f8a3a"><circle cx="34" cy="46" r="1.6"/><circle cx="48" cy="46" r="1.6"/></g>
+</g>
+<g><circle cx="70" cy="40" r="8" fill="#e2493a"/><circle cx="70" cy="40" r="4" fill="#f2836f"/>
+<circle cx="74" cy="60" r="8" fill="#d93a2b"/><circle cx="74" cy="60" r="4" fill="#f07a66"/>
+<circle cx="60" cy="72" r="6" fill="#e2493a"/><circle cx="60" cy="72" r="3" fill="#f2836f"/></g>
+<g fill="#3f8a3a"><ellipse cx="66" cy="50" rx="3" ry="1.5" transform="rotate(30 66 50)"/><ellipse cx="80" cy="50" rx="3" ry="1.5" transform="rotate(-30 80 50)"/></g>
+</svg>

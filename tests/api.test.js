@@ -10,7 +10,20 @@ describe('Speiseplan laden', () => {
   it('liefert die Gerichte von heute', async () => {
     const plan = await ladeSpeiseplan('heute')
     expect(plan.gerichte).toHaveLength(4)
-    expect(plan.gerichte[0].name).toBe('Linsen-Dal mit Basmatireis')
+    expect(plan.gerichte[0].name).toBe('Linsen-Dal')
+  })
+
+  it('liefert drei Preise pro Gericht', async () => {
+    const plan = await ladeSpeiseplan('heute')
+    expect(plan.gerichte[0].preise).toEqual({ studierende: 2.1, bedienstete: 3.8, gaeste: 4.9 })
+  })
+
+  it('liefert das echte Datum von heute und morgen', async () => {
+    const heute = await ladeSpeiseplan('heute')
+    const morgen = await ladeSpeiseplan('morgen')
+    const tage = (new Date(morgen.datum) - new Date(heute.datum)) / 86_400_000
+    expect(heute.datum).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+    expect(tage).toBe(1)
   })
 
   it('wirft einen Fehler bei einem unbekannten Tag (404)', async () => {
@@ -26,6 +39,7 @@ describe('Speiseplan laden', () => {
     server.use(szenarien.leer)
     const plan = await ladeSpeiseplan('heute')
     expect(plan.gerichte).toEqual([])
+    expect(plan.datum).toMatch(/^\d{4}-\d{2}-\d{2}$/)
   })
 })
 
